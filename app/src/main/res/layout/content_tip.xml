@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="@string/main.hint.total"
+        android:ems="10"
+        android:id="@+id/inputTotal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main.button.calcular"
+        android:id="@+id/btnCalcular"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/inputTotal"
+        android:layout_toEndOf="@+id/inputTotal" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main.button.incremento"
+        android:id="@+id/btnIncrementar"
+        android:layout_below="@+id/btnCalcular"
+        android:layout_alignLeft="@+id/btnCalcular"
+        android:layout_alignStart="@+id/btnCalcular"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main.button.decremento"
+        android:id="@+id/btnDecrementar"
+        android:layout_alignTop="@+id/btnIncrementar"
+        android:layout_toRightOf="@+id/btnIncrementar"
+        android:layout_toEndOf="@+id/btnIncrementar"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:hint="@string/main.hint.porcentaje"
+        android:ems="10"
+        android:id="@+id/intputPropina"
+        android:layout_alignBottom="@+id/btnIncrementar"
+        android:layout_toStartOf="@+id/btnIncrementar"
+        android:layout_toLeftOf="@+id/btnIncrementar"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main.button.limpiar"
+        android:id="@+id/btnLimpiar"
+        android:layout_below="@+id/intputPropina"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@android:color/darker_gray"
+        android:id="@+id/separador"
+        android:layout_below="@+id/btnLimpiar"
+        android:layout_alignStart="@id/btnLimpiar"
+        android:layout_alignEnd="@id/btnCalcular"
+        android:layout_alignLeft="@id/btnLimpiar"
+        android:layout_alignRight="@id/btnCalcular"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/txtPropina"
+        android:layout_below="@+id/separador"
+        android:visibility="gone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+
+</RelativeLayout>

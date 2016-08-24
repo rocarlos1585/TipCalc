@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TipCalc</string>
+    <string name="main.button.calcular">calcular</string>
+    <string name="main.hint.total">total</string>
+    <string name="main.hint.porcentaje">% de propina</string>
+    <string name="main.button.incremento">+</string>
+    <string name="main.button.decremento">-</string>
+    <string name="main.button.limpiar">borrar recientes</string>
+    <string name="main.notice.limpiar">los elementos recientes han sido borrados</string>
+    <string name="main.menu.action.acerca_de">Acerca de</string>
+
+    <string name="global.message.propina">Propina %,.1f</string>
+
+</resources>
