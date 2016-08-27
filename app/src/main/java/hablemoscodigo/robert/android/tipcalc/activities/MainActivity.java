@@ -1,4 +1,4 @@
-package hablemoscodigo.robert.android.tipcalc;
+package hablemoscodigo.robert.android.tipcalc.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +17,10 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hablemoscodigo.robert.android.tipcalc.R;
+import hablemoscodigo.robert.android.tipcalc.TipCalcApp;
+import hablemoscodigo.robert.android.tipcalc.fragments.TipHistoryListFragment;
+import hablemoscodigo.robert.android.tipcalc.fragments.TipHistoryListFragmentListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.txtPropina)
     TextView txtPropina;
 
+    private TipHistoryListFragmentListener fragmentListener;
     public static int incremento_propina = 1;
     public static int propina_default = 10;
 
@@ -43,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        TipHistoryListFragment fragment = (TipHistoryListFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentList);
+        fragment.setRetainInstance(true);
+        fragmentListener = (TipHistoryListFragmentListener)fragment;
+
     }
 
     @Override
@@ -69,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             int tipPercentage = getTipPercentage();
             double tip = total*(tipPercentage/100d);
             String strTip = String.format(getString(R.string.global_message_propina),tip);
+            fragmentListener.action(strTip);
             txtPropina.setVisibility(View.VISIBLE);
             txtPropina.setText(strTip);
 
