@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,6 +59,58 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @OnClick(R.id.btnCalcular)
+    public void handleClickCalcular(){
+        Log.e(getLocalClassName(),"click en submit");
+        esconderTeclado();
+        String strInputTotal = inputTotal.getText().toString().trim();
+        if(!strInputTotal.isEmpty()){
+            double total = Double.parseDouble(strInputTotal);
+            int tipPercentage = getTipPercentage();
+            double tip = total*(tipPercentage/100d);
+            String strTip = String.format(getString(R.string.global_message_propina),tip);
+            txtPropina.setVisibility(View.VISIBLE);
+            txtPropina.setText(strTip);
+
+        }
+    }
+
+    public int getTipPercentage() {
+        int tipPercentage = propina_default;
+        String strInputTipPercentage = intputPropina.getText().toString().trim();
+        if (!strInputTipPercentage.isEmpty()){
+            tipPercentage=Integer.parseInt(strInputTipPercentage);
+        }
+        else{
+            intputPropina.setText(String.valueOf(tipPercentage));
+        }
+        return tipPercentage;
+    }
+
+    @OnClick(R.id.btnIncrementar)
+    public void handleClickIncrementar(){
+        esconderTeclado();
+        handleTipChange(incremento_propina);
+
+    }
+
+    @OnClick(R.id.btnDecrementar)
+    public void handleClickDecrementar(){
+        esconderTeclado();
+        handleTipChange(-incremento_propina);
+
+
+
+    }
+
+    private void handleTipChange(int change) {
+        int tipPercentage = getTipPercentage();
+        tipPercentage += change;
+        if(tipPercentage > 0){
+            intputPropina.setText(String.valueOf(tipPercentage));
+        }
+    }
+
     private void about() {
         TipCalcApp app = (TipCalcApp) getApplication();
         String strUrl = app.getAboutUrl();
@@ -67,11 +120,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @OnClick(R.id.btnCalcular)
-    public void handleClickSubmit(){
-        esconderTeclado();
-
-    }
 
     private void esconderTeclado() {
         InputMethodManager inputManager = (InputMethodManager)
@@ -83,4 +131,6 @@ public class MainActivity extends AppCompatActivity {
             Log.e(getLocalClassName(), Log.getStackTraceString(npe));
         }
     }
+
+
 }
